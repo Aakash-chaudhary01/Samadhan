@@ -1,26 +1,27 @@
 {
-  "name": "samdhan",
-  "version": "0.1.0",
-  "private": true,
+  "name": "samadhan",
+  "version": "1.0.0",
+  "description": "SAMADHAN - Smart Civic Issue Reporting & Resolving Platform",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
+    "dev": "npx concurrently -n \"server,client,ai\" -c \"blue,green,magenta\" \"npm run server\" \"npm run client\" \"npm run ai\"",
+    "dev:client": "npm run client",
+    "dev:server": "npm run server:dev",
+    "test": "NODE_PATH=server/node_modules node --test tests/auth_rbac.test.js tests/full_platform.test.js",
+    "seed": "cd server && npm run seed",
+    "server": "cd server && npm start",
+    "server:dev": "cd server && npm run dev",
+    "client": "cd client && npm run dev",
+    "client:build": "cd client && npm run build",
+    "ai": "cd ai-service && ./venv/bin/uvicorn main:app --port 8000 --reload"
   },
-  "dependencies": {
-    "next": "16.4.0",
-    "react": "19.3.0",
-    "react-dom": "19.3.0"
-  },
-  "devDependencies": {
-    "@tailwindcss/turbopack": "^4",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "16.4.0",
-    "tailwindcss": "^4",
-    "typescript": "^5"
-  }
+  "keywords": [
+    "civic",
+    "smart-city",
+    "governance",
+    "complaints",
+    "leaflet",
+    "mongodb"
+  ],
+  "author": "SAMADHAN Team",
+  "license": "MIT"
 }
